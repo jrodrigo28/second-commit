@@ -1,3 +1,17 @@
 <html>
-	<p>This is the home page to the Content Management System<p>
+	<head>
+		<title> CMS </title>
+	</head>
+	<body>
+	{% for article in articles%}
+		<div>
+		<p>
+		Title:{{ article.title }}<br>
+		Created Date: {{article.created_date}}<br>
+		Team: {{article.team}}<br>
+		Author: {{article.author|linebreaksbr}}<br>
+		</p>
+		</div>
+	{% endfor %}	
+	</body>
 </html>
