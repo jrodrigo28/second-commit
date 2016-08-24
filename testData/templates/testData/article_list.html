@@ -1,17 +1,12 @@
-<html>
-	<head>
-		<title> CMS </title>
-	</head>
-	<body>
+{% extends 'testData/base.html' %}
+
+{% block content %}
 	{% for article in articles%}
-		<div>
-		<p>
-		Title:{{ article.title }}<br>
-		Created Date: {{article.created_date}}<br>
-		Team: {{article.team}}<br>
-		Author: {{article.author|linebreaksbr}}<br>
-		</p>
-		</div>
+		<div class= "article">
+			<h1><a href="{% url 'article_detail' pk=article.pk %}"> Title:{{ article.title }}</a></h1>
+			<div class="created_date">
+				Created Date: {{article.created_date}}
+			</div>
+			</div>
 	{% endfor %}	
-	</body>
-</html>
+{% endblock %}

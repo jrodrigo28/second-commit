@@ -18,4 +18,7 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.article_list,name ='article_list'),
+    url(r'^article/(?P<pk>\d+)/$',views.article_detail,name='article_detail'),
+    url(r'^new/article/$',views.new_article,name='new_article'),
+    url(r'^edit/(?P<pk>\d+)/article/$',views.edit_article,name='edit_article'),
 ]
