@@ -45,3 +45,8 @@ def edit_article(request,pk):
         form = ArticleForm(instance=article)
     return render(request,'testData/article_edit.html',{'form':form})
 
+@login_required
+def delete_article(request,pk):
+    article = get_object_or_404(Article,pk=pk)
+    article.delete()
+    return redirect('article_list')

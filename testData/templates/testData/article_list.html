@@ -2,13 +2,24 @@
 
 {% block content %}
 	{% if user.is_authenticated %}
+	<table style="width:100%">
+		<tr>
+			<th> Title </th>
+			<th> Image </th>
+			<th> Created Date </th>
+			<th> Author </th>
+			<th> Team </th>
+			<th> Persona </th>
+		</tr>
 		{% for article in articles%}
-			<div class= "article">
-				<a href="{% url 'article_detail' pk=article.pk %}"> Title:{{ article.title }}</a>
-				<div class="created_date" align = "left">
-					Created Date: {{article.created_date}}
-				</div>
-				</div>
+		<tr>
+			<td> <h1> <a href="{% url 'article_detail' pk=article.pk %}"> {{ article.title }}</a> </h1></td>
+			<td> <img src = "{{article.sourceURL}}" width="100px"> </td>
+			<td> {{article.created_date}} </td>
+			<td> {{article.author}} </td>
+			<td> {{article.team}} </td>
+			<td> {{article.persona}} </td>
+ 		</tr>
 		{% endfor %}
 	{% endif %}
 {% endblock %}
