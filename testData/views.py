@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.utils import timezone
 from django.shortcuts import render,get_object_or_404,redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 from .models import Article
 from .forms import ArticleForm
 
@@ -14,6 +16,7 @@ def article_detail(request,pk):
     article = get_object_or_404(Article,pk=pk)
     return render(request,'testData/article_detail.html',{'article':article})
 
+@login_required
 def new_article(request):
     if request.method == "POST":
         form = ArticleForm(request.POST)
@@ -27,6 +30,7 @@ def new_article(request):
         form = ArticleForm()
     return render(request,'testData/article_edit.html',{'form':form})
 
+@login_required
 def edit_article(request,pk):
     article = get_object_or_404(Article,pk=pk)
     if request.method == "POST":
