@@ -1,19 +1,56 @@
 <html>
 	<head>
+		<style>
+		ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			background-color: #4d94ff
+		}
+
+		li {
+			float: left;
+		}
+
+		li a {
+			display: inline-block;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}
+
+		li a:hover {
+			background-color: #1a75ff;
+			color:white;
+		}
+		</style>
 		<title> CMS </title>
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-	</head>
-<body>
-    <div class="page-header">
+	    <div class="page-header">
         <h1><a href="/">CMS</a></h1>
 		{% if user.is_authenticated %}
-			<p class ="top menu"> Create a new article <a href="{% url 'new_article' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a></p>
-			<p class = "top menu"> Hello {{user.username}}! <small> (<a href="{% url 'logout' %}"> Log out </a>)</small></p>
+		<div align = "right">Hello {{user.username}}! <small> (<a href="{% url 'logout' %}"> Log out </a>)</small></div>
+		<p class = "top menu"> 
+			<ul>
+				<li> <a href = "{% url 'team_article_list' team='Entertainment' %}" > Entertainment </a></li>
+				<li> <a href = "{% url 'team_article_list' team='Science' %}"> Science </a></li>
+				<li> <a href = "{% url 'team_article_list' team='Humor' %}"> Humor </a></li>
+				<li> <a href = "{% url 'team_article_list' team='Inspirational' %}"> Inspirational </a></li>
+				<li> <a href = "{% url 'team_article_list' team='DIY' %}"> DIY </a></li>
+			</ul>
+			Create a new article <a href="{% url 'new_article' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+		</p>
 		{% else %}
 			Login:<a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
 		{% endif %}
     </div>
+		
+	</head>
+<body>
+
     <div class="content container">
         <div class="row">
             <div class="col-md-8">

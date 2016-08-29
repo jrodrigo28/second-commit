@@ -25,4 +25,6 @@ urlpatterns = [
     url(r'^delete/(?P<pk>\d+)/article/$',views.delete_article,name='delete_article'),
     url(r'^accounts/login/$',django.contrib.auth.views.login,name='login'),
     url(r'^accounts/logout/$',django.contrib.auth.views.logout,name='logout',kwargs={'next_page':'/'}),
+    url(r'^articlelist/(?P<team>[\w\-]+)/$',views.team_article_list,name='team_article_list'),
+    
 ]

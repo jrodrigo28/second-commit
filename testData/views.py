@@ -8,8 +8,14 @@ from .forms import ArticleForm
 
 # Create your views here.
 
+@login_required
 def article_list(request):
     articles = Article.objects.filter(created_date__lte=timezone.now()).order_by('created_date')
+    return render(request, 'testData/article_list.html', {'articles':articles})
+
+@login_required
+def team_article_list(request,team):
+    articles = Article.objects.filter(created_date__lte=timezone.now(),team=team).order_by('created_date')
     return render(request, 'testData/article_list.html', {'articles':articles})
 
 def article_detail(request,pk):
