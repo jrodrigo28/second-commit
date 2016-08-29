@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'testData',
-    'django_tables2'
 ]
 
 MIDDLEWARE = [
