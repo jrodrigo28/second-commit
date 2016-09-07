@@ -35,6 +35,7 @@
 		<div align = "right">Hello {{user.username}}! <small> (<a href="{% url 'logout' %}"> Log out </a>)</small></div>
 		<p class = "top menu"> 
 			<ul>
+				<li> <a href = "{% url 'team_article_list' team='myArticles' %}" > My Articles </a></li>
 				<li> <a href = "{% url 'team_article_list' team='Entertainment' %}" > Entertainment </a></li>
 				<li> <a href = "{% url 'team_article_list' team='Science' %}"> Science </a></li>
 				<li> <a href = "{% url 'team_article_list' team='Humor' %}"> Humor </a></li>

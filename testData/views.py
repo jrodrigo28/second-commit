@@ -15,7 +15,10 @@ def article_list(request):
 
 @login_required
 def team_article_list(request,team):
-    articles = Article.objects.filter(created_date__lte=timezone.now(),team=team).order_by('created_date')
+    if team=="myArticles":
+        articles = Article.objects.filter(created_date__lte=timezone.now(),author=request.user).order_by('created_date')
+    else:
+        articles = Article.objects.filter(created_date__lte=timezone.now(),team=team).order_by('created_date')
     return render(request, 'testData/article_list.html', {'articles':articles})
 
 def article_detail(request,pk):
